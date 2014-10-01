@@ -1,0 +1,42 @@
+         START   1000
+         LDX     #96
+         LDT     #123
+         LDS     #32
+         LDA     #0
+         LDB     ENDCH
+LOOP     TD      INDEV
+         JEQ     LOOP
+         RD      INDEV
+         COMPR   A,B
+         JEQ     FINISH
+         COMPR   A,X
+         JGT     CH2
+         JLT     PRINT
+         JEQ     PRINT
+CH2      COMPR   A,T
+         JLT     UPPER
+         JGT     PRINT
+         JEQ     PRINT
+UPPER    JSUB    TOUPPER
+PRINT    JSUB    PRINTC
+         COMPR   X,X
+         JEQ     LOOP
+FINISH   RMO     A,X
+         RMO     A,X
+         J       *
+PRINTC   TD      OUTDEV
+         JEQ     PRINTC
+         WD      OUTDEV
+         RSUB
+TOUPPER  SUBR    S,A
+         RSUB
+INDEV    BYTE    X'F3'
+OUTDEV   BYTE    X'05'
+ENDCH    WORD    4
+         END
+H      ^001000^00005A
+T001000^1D^05006075007B6D00200100006B2049E32044332FFADB203EA003332021
+T00101D^1E^A0013720063B201133200EA0053B20063720063320034B201B4B200CA011
+T00103B^1D^332FD1AC01AC013F2FFDE3200F332FFADF20094F000094404F0000F305
+T001058^03^000004
+E001000

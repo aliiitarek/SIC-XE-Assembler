@@ -1,0 +1,35 @@
+PROB2    START   1000
+         LDA     #0
+         LDS     #10
+         LDB     #48
+AGAIN    TD      INDEV
+         JEQ     AGAIN
+         RD      INDEV
+         RMO     A,T
+         SUBR    B,T
+         MULR    S,T
+         LDA     NUMBER
+         ADDR    A,T
+         STT     NUMBER
+         LDS     #1
+SECOND   TD      INDEV
+         JEQ     SECOND
+         RD      INDEV
+         RMO     A,T
+         SUBR    B,T
+         MULR    S,T
+         LDA     NUMBER
+         ADDR    A,T
+         STT     NUMBER
+         LDA     NUMBER
+         COMPR   T,T
+         JEQ     EE
+EE       J       *
+INDEV    BYTE    X'F3'
+NUMBER   WORD    0
+         END
+HPROB2 ^001000^000048
+T001000^1D^0100006D000A690030E32039332FFADB2033AC059435984503202B9005
+T00101D^1D^8720266D0001E3201F332FFADB2019AC0594359845032011900587200C
+T00103A^0F^032009A0553320003F2FFDF3000000
+E001000

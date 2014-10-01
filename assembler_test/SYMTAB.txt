@@ -1,0 +1,4 @@
+          ALPHA          101B          RELOCATABLE
+          BETA          101E          RELOCATABLE
+          GAMMA          1021          RELOCATABLE
+          PROB2          1000          RELOCATABLE

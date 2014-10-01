@@ -1,0 +1,56 @@
+.2345678901234567890123
+PROG4    START   1000
+         LDx     #0
+         LDS     #0
+         LDT     #1
+         LDL     #4
+LOOP     LDCH    STRING,X
+         STCH    SORTED,X
+         ADDR    T,X
+         COMPR   X,L
+         JLT     LOOP
+ILOOP    LDX     #0
+         COMPR   S,L
+         JEQ     FINAL
+         ADDR    T,S
+JLOOP    SUBR    T,L
+         COMPR   X,L
+         ADDR    T,L
+         JEQ     ILOOP
+         ADDR    T,X
+         LDCH    SORTED,X
+         RMO     A,B
+         SUBR    T,X
+         LDCH    SORTED,X
+         COMPR   A,B
+         JGT     SWAP
+         ADDR    T,X
+         COMPR   X,X
+         JEQ     JLOOP
+SWAP     STCH    TEMP
+         RMO     B,A
+         STCH    SORTED,X
+         LDCH    TEMP
+         ADDR    T,X
+         STCH    SORTED,X
+         COMPR   X,X
+         JEQ     JLOOP
+FINAL    LDx     #0
+         LDA     #0
+PRINT    COMPR   X,L
+         JEQ     FIN
+         LDCH    SORTED,X
+         ADDR    T,X
+         JLT     PRINT
+FIN      J       *
+STRING   BYTE    C'adcb'
+SORTED   RESB    4
+TEMP     BYTE    c'a'
+         END
+HPROG4 ^001000^000077
+T001000^1E^0500006D000075000109000453A06057A0619051A0123B2FF3050000A042
+T00101E^1C^33203890549452A0129052332FED905153A042AC03945153A03BA003
+T00103A^1C^3720079051A011332FDF572030AC3057A027532028905157A01FA011
+T001056^1D^332FCA050000010000A01233200853A00C90513B2FF33F2FFD61646362
+T001077^01^61
+E001000

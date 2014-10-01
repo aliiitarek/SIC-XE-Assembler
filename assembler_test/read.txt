@@ -1,0 +1,15 @@
+PROB2    START   1000
+         LDS     ALPHA
+         LDA     BETA
+         MUL     #3
+         STA     ALPHA
+         LDA     GAMMA
+         MUL     #4
+         ADD     ALPHA
+         STA     ALPHA
+         LDS     ALPHA
+ALPHA    WORD    0
+BETA     WORD    2
+GAMMA    WORD    1
+         END
+
